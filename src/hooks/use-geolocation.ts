@@ -61,7 +61,7 @@ export function useGeolocation(){
             });
         },{
             enableHighAccuracy: true,
-            timeout: 500,
+            timeout: 10000,
             maximumAge: 0
         });
     };

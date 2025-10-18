@@ -53,12 +53,22 @@ const WeatherForecast = ({data}:WeatherForecastProps) => {
       <CardContent>
         <div className="grid gap-4">
           {nextDays.map((day) => {
-              return <div key={day.date} className="grid grid-cols-3 items-center gap-4 rounded-lg border p-4">
+              return (
+                <div
+                  key={day.date}
+                  className="grid grid-cols-2 justify-around items-center rounded-lg border p-4"
+                >
                   <div>
-                    <p className="font-medium">{format(new Date(day.date * 1000), "EEE, MM, d")}</p>
-                    <p className="text-sm text-muted-foreground capitalize">{day.weather.description}</p>
+                    <div>
+                      <p className="font-medium">
+                        {format(new Date(day.date * 1000), "EEE, MM, d")}
+                      </p>
+                      <p className="text-sm text-muted-foreground capitalize">
+                        {day.weather.description}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex justify-center gap-4">
+                  <div className="grid grid-cols-2 items-center gap-4 rounded-lg lg:grid-cols-4">
                     <span className="flex items-center text-blue-500">
                       <ArrowDown className="mr-1 h-4 w-4" />
                       {formatTemp(day.temp_min)}
@@ -67,8 +77,6 @@ const WeatherForecast = ({data}:WeatherForecastProps) => {
                       <ArrowUp className="mr-1 h-4 w-4" />
                       {formatTemp(day.temp_max)}
                     </span>
-                  </div>
-                  <div className="flex justify-end gap-4">
                     <span className="flex items-center gap-1">
                       <Droplets className="h-4 w-4 text-blue-500" />
                       <span className="text-sm">{day.humidity}%</span>
@@ -78,7 +86,8 @@ const WeatherForecast = ({data}:WeatherForecastProps) => {
                       <span className="text-sm">{day.wind}m/s</span>
                     </span>
                   </div>
-              </div>
+                </div>
+              );
           })}
         </div>
       </CardContent>
